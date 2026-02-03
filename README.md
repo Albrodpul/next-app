@@ -1,12 +1,12 @@
-# Paradise a La Carte - Next.js Migration
+# Next.js 14 Starter
 
-> Migración del proyecto de Nuxt (Vue 3) a Next.js 14 (React 18)
+> Proyecto de aprendizaje y base para aplicaciones Next.js 14 (React 18)
 
 ## 📚 Índice
 
 1. [Introducción](#introducción)
 2. [Arquitectura del Proyecto](#arquitectura-del-proyecto)
-3. [React vs Vue: Conceptos Clave](#react-vs-vue-conceptos-clave)
+3. [Conceptos Clave de React y Next.js](#conceptos-clave-de-react-y-nextjs)
 4. [Estructura de Carpetas](#estructura-de-carpetas)
 5. [Patrones y Convenciones](#patrones-y-convenciones)
 6. [Configuración](#configuración)
@@ -23,20 +23,20 @@
 
 ## Introducción
 
-Este proyecto es una migración completa de una aplicación Nuxt/Vue a Next.js/React. El objetivo es mantener la misma funcionalidad mientras aprovechamos las ventajas del ecosistema React.
+Este proyecto es una base moderna para aplicaciones Next.js 14 con React 18. Incluye ejemplos de arquitectura, patrones recomendados, internacionalización, manejo de estado, hooks personalizados, integración con Apollo Client y estilos con Tailwind + SCSS Modules.
 
 ### Stack Tecnológico
 
-| Aspecto | Nuxt (Original) | Next.js (Nuevo) |
-|---------|-----------------|-----------------|
-| Framework | Nuxt 4 | Next.js 14 |
-| UI Library | Vue 3 | React 18 |
-| State Management | Vue Reactivity + Provide/Inject | Context API + Hooks |
-| Routing | Nuxt Pages | App Router |
-| Data Fetching | Apollo Client | Apollo Client |
-| i18n | vue-i18n | next-intl |
-| UI Components | Element Plus | Custom + Tailwind |
-| Styling | SCSS + Tailwind | SCSS Modules + Tailwind |
+| Aspecto           | Tecnología         |
+|-------------------|-------------------|
+| Framework         | Next.js 14        |
+| UI Library        | React 18          |
+| State Management  | Context API + Hooks |
+| Routing           | App Router        |
+| Data Fetching     | Apollo Client     |
+| i18n              | next-intl         |
+| UI Components     | Custom + Tailwind |
+| Styling           | SCSS Modules + Tailwind |
 
 ---
 
@@ -85,57 +85,21 @@ next-app/
 
 ---
 
-## React vs Vue: Conceptos Clave
+## Conceptos Clave de React y Next.js
 
-### 1. Reactividad
-
-**Vue** usa un sistema de reactividad basado en `ref()` y `reactive()`:
-
-```vue
-<script setup>
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-const increment = () => {
-  count.value++
-}
-</script>
-```
-
-**React** usa `useState` para estado y re-renderiza cuando cambia:
+### Estado y Efectos
 
 ```tsx
 const [count, setCount] = useState(0)
 const doubled = useMemo(() => count * 2, [count])
 
-const increment = () => {
-  setCount(prev => prev + 1)
-}
+useEffect(() => {
+  // Lógica de efecto
+}, [count])
 ```
 
-### 2. Ciclo de Vida
+### Renderizado Condicional y Listas
 
-| Vue | React |
-|-----|-------|
-| `onMounted(() => {})` | `useEffect(() => {}, [])` |
-| `onUnmounted(() => {})` | `useEffect(() => () => cleanup, [])` |
-| `watch(ref, callback)` | `useEffect(() => callback, [dependency])` |
-| `computed(() => value)` | `useMemo(() => value, [deps])` |
-
-### 3. Renderizado Condicional
-
-**Vue** usa directivas:
-```vue
-<template>
-  <div v-if="isVisible">Visible</div>
-  <div v-else>Hidden</div>
-  <ul>
-    <li v-for="item in items" :key="item.id">{{ item.name }}</li>
-  </ul>
-</template>
-```
-
-**React** usa JavaScript directamente:
 ```tsx
 return (
   <>
@@ -149,55 +113,18 @@ return (
 )
 ```
 
-### 4. Props y Eventos
+### Props y Children
 
-**Vue**:
-```vue
-<script setup>
-const props = defineProps<{ title: string }>()
-const emit = defineEmits<{ (e: 'update', value: string): void }>()
-</script>
-```
-
-**React**:
 ```tsx
 interface Props {
   title: string
   onUpdate: (value: string) => void
+  children?: React.ReactNode
 }
 
-function Component({ title, onUpdate }: Props) {
-  // onUpdate es simplemente una función que se pasa como prop
-}
-```
-
-### 5. Slots vs Children
-
-**Vue** usa slots:
-```vue
-<template>
-  <slot name="header" />
-  <slot /> <!-- default slot -->
-  <slot name="footer" />
-</template>
-```
-
-**React** usa children y render props:
-```tsx
-interface Props {
-  header?: React.ReactNode
-  children: React.ReactNode
-  footer?: React.ReactNode
-}
-
-function Layout({ header, children, footer }: Props) {
-  return (
-    <>
-      {header}
-      {children}
-      {footer}
-    </>
-  )
+function Component({ title, onUpdate, children }: Props) {
+  // ...
+  return <div>{title}{children}</div>
 }
 ```
 
@@ -245,7 +172,7 @@ components/
 
 ### 1. 'use client' Directive
 
-En Next.js 14, los componentes son Server Components por defecto. Si necesitas interactividad (hooks, eventos), debes marcarlos:
+Los componentes son Server Components por defecto. Si necesitas interactividad (hooks, eventos), usa:
 
 ```tsx
 'use client'
@@ -260,10 +187,7 @@ export function Counter() {
 
 ### 2. CSS Modules
 
-Usamos CSS Modules para encapsular estilos:
-
 ```tsx
-// Button.tsx
 import styles from './Button.module.scss'
 
 export function Button({ children }) {
@@ -271,17 +195,7 @@ export function Button({ children }) {
 }
 ```
 
-```scss
-// Button.module.scss
-.button {
-  padding: 12px 24px;
-  background: var(--brand-gold);
-}
-```
-
 ### 3. Componente por Archivo
-
-Cada componente tiene su propio archivo con estilos asociados:
 
 ```
 Button/
@@ -292,20 +206,7 @@ Button/
 
 ### 4. Hooks Personalizados
 
-Encapsulamos lógica reutilizable en hooks:
-
 ```tsx
-// ❌ Lógica duplicada en componentes
-function Component1() {
-  const [width, setWidth] = useState(window.innerWidth)
-  useEffect(() => {
-    const handler = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', handler)
-    return () => window.removeEventListener('resize', handler)
-  }, [])
-}
-
-// ✅ Hook reutilizable
 function Component1() {
   const { width } = useWindowSize()
 }
@@ -323,15 +224,10 @@ import createNextIntlPlugin from 'next-intl/plugin'
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
 const nextConfig = {
-  // Deshabilitamos SSR estricto como en el proyecto original
   reactStrictMode: false,
-  
-  // Optimización de imágenes
   images: {
-    domains: ['paradise-a-la-carte.s3.amazonaws.com', /* ... */],
+    domains: [],
   },
-  
-  // Soporte SCSS
   sassOptions: {
     includePaths: ['./src/styles'],
   },
@@ -343,9 +239,9 @@ export default withNextIntl(nextConfig)
 ### Variables de Entorno (.env.local)
 
 ```env
-NEXT_PUBLIC_API_URL=https://api.paradisealacarte.com/graphql
-NEXT_PUBLIC_STRIPE_KEY=pk_live_...
-NEXT_PUBLIC_GOOGLE_MAPS_KEY=...
+NEXT_PUBLIC_API_URL=
+NEXT_PUBLIC_STRIPE_KEY=
+NEXT_PUBLIC_GOOGLE_MAPS_KEY=
 ```
 
 ---
@@ -356,29 +252,20 @@ NEXT_PUBLIC_GOOGLE_MAPS_KEY=...
 
 #### Button
 
-Reemplaza a `ElButton` de Element Plus:
-
 ```tsx
 import { Button } from '@/components/ui/Button'
 
-// Variantes disponibles
 <Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="link">Link</Button>
-
-// Con iconos
 <Button leftIcon={<Icon name="arrow-left" />}>Back</Button>
-
-// Estados
 <Button loading>Loading...</Button>
 <Button disabled>Disabled</Button>
 ```
 
 #### Icon
-
-Sistema de iconos SVG:
 
 ```tsx
 import { Icon } from '@/components/ui/Icon'
@@ -391,8 +278,6 @@ import { Icon } from '@/components/ui/Icon'
 ## Estado y Contexto
 
 ### AuthContext
-
-Reemplaza a `getAuthUser` y `getAuthRoles` composables:
 
 ```tsx
 'use client'
@@ -412,8 +297,6 @@ function Profile() {
 
 ### EventBusContext
 
-Reemplaza al plugin mitt ($eventBus):
-
 ```tsx
 'use client'
 
@@ -422,10 +305,8 @@ import { useEventBus } from '@/contexts/EventBusContext'
 function Component() {
   const { emit, on, off } = useEventBus()
 
-  // Emitir evento
   emit('drawer:open', { component: 'LoginDrawer' })
 
-  // Escuchar evento
   useEffect(() => {
     const unsubscribe = on('drawer:open', (data) => {
       console.log('Drawer opened:', data)
@@ -446,7 +327,6 @@ const [search, setSearch] = useState('')
 const debouncedSearch = useDebounce(search, 300)
 
 useEffect(() => {
-  // Solo se ejecuta 300ms después de que el usuario deja de escribir
   fetchResults(debouncedSearch)
 }, [debouncedSearch])
 ```
@@ -455,8 +335,6 @@ useEffect(() => {
 
 ```tsx
 const [theme, setTheme, removeTheme] = useLocalStorage('theme', 'light')
-
-// Persistido automáticamente en localStorage
 setTheme('dark')
 ```
 
@@ -489,7 +367,6 @@ return (
 ### Variables CSS (src/styles/variables/)
 
 ```scss
-// colors.scss
 :root {
   --brand-gold: #b8860b;
   --brand-gold-light: #d4a843;
@@ -500,8 +377,6 @@ return (
 ```
 
 ### Tailwind + SCSS Modules
-
-Combinamos Tailwind para utilidades y SCSS Modules para componentes:
 
 ```tsx
 <div className={cn(styles.card, 'p-4 hover:shadow-lg')}>
@@ -529,7 +404,6 @@ import { useTranslations } from 'next-intl'
 
 function Header() {
   const t = useTranslations('header')
-  
   return <nav>{t('home')}</nav>
 }
 ```
@@ -537,7 +411,6 @@ function Header() {
 ### Archivos de Traducción
 
 ```json
-// src/i18n/messages/es.json
 {
   "header": {
     "home": "Inicio",
@@ -604,12 +477,10 @@ export const config = {
 ### AuthContext
 
 ```tsx
-// Proveedor en layout
 <AuthProvider>
   {children}
 </AuthProvider>
 
-// Consumo en componentes
 const { user, login, logout, isAuthenticated } = useAuth()
 ```
 
@@ -647,11 +518,10 @@ NEXT_PUBLIC_FIREBASE_CONFIG=
 
 ## Próximos Pasos
 
-1. **Migrar páginas restantes**: Convertir las ~50 páginas de Vue a React
-2. **Migrar componentes**: Convertir los ~100+ componentes
-3. **Tests**: Implementar tests con Jest/React Testing Library
-4. **Optimización**: Implementar ISR/SSG donde sea apropiado
-5. **Analytics**: Configurar Google Analytics y Sentry
+1. Migrar páginas y componentes adicionales
+2. Implementar tests con Jest/React Testing Library
+3. Optimización: ISR/SSG donde sea apropiado
+4. Configurar Analytics y monitoreo
 
 ---
 
