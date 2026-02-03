@@ -1,0 +1,87 @@
+.section {
+  padding: 64px 24px;
+  background: var(--gradient-primary);
+
+  @media (min-width: 1100px) {
+    padding: 80px 48px;
+  }
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+
+  @media (min-width: 1100px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.text {
+  text-align: center;
+
+  @media (min-width: 1100px) {
+    text-align: left;
+    max-width: 500px;
+  }
+
+  h2 {
+    color: var(--brand-off-black);
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: var(--brand-off-black);
+    opacity: 0.8;
+    margin-bottom: 32px;
+  }
+}
+
+.stores {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  @media (min-width: 1100px) {
+    justify-content: flex-start;
+  }
+}
+
+.storeButton {
+  display: block;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.phoneImage {
+  width: 280px;
+  height: 560px;
+
+  @media (min-width: 1100px) {
+    width: 320px;
+    height: 640px;
+  }
+}
+
+.phonePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+
+  span {
+    font-family: 'graphic-medium', sans-serif;
+    color: var(--brand-mid-grey);
+  }
+}

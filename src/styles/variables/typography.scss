@@ -1,0 +1,286 @@
+/**
+ * EXPLICACIÓN: Tipografía del proyecto
+ * 
+ * Este archivo define las fuentes personalizadas (Canela y Graphik)
+ * y las clases de tipografía usadas en todo el proyecto.
+ * 
+ * En React/Next.js, también podemos usar la API de fuentes de Next.js
+ * para optimizar la carga de fuentes, pero mantenemos esta configuración
+ * para compatibilidad con el diseño original.
+ */
+
+/* ===== CANELA FONT FAMILY ===== */
+@font-face {
+  font-family: 'canela-black';
+  src: url('/fonts/Canela/Canela-Black.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-black-italic';
+  src: url('/fonts/Canela/Canela-BlackItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-bold';
+  src: url('/fonts/Canela/Canela-Bold.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-bold-italic';
+  src: url('/fonts/Canela/Canela-BoldItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-light';
+  src: url('/fonts/Canela/Canela-Light.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-light-italic';
+  src: url('/fonts/Canela/Canela-LightItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-medium';
+  src: url('/fonts/Canela/Canela-Medium.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-medium-italic';
+  src: url('/fonts/Canela/Canela-MediumItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-regular';
+  src: url('/fonts/Canela/Canela-Regular.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-regular-italic';
+  src: url('/fonts/Canela/Canela-ThinItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-thin';
+  src: url('/fonts/Canela/Canela-Thin.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'canela-thin-italic';
+  src: url('/fonts/Canela/Canela-ThinItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+/* ===== GRAPHIK FONT FAMILY ===== */
+@font-face {
+  font-family: 'graphic-black';
+  src: url('/fonts/Graphik/Graphik-Black.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-black-italic';
+  src: url('/fonts/Graphik/Graphik-BlackItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-bold';
+  src: url('/fonts/Graphik/Graphik-Bold.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-bold-italic';
+  src: url('/fonts/Graphik/Graphik-BoldItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-extra-light';
+  src: url('/fonts/Graphik/Graphik-Extralight.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-light';
+  src: url('/fonts/Graphik/Graphik-Light.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-light-italic';
+  src: url('/fonts/Graphik/Graphik-LightItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-medium';
+  src: url('/fonts/Graphik/Graphik-Medium.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-medium-italic';
+  src: url('/fonts/Graphik/Graphik-MediumItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-regular';
+  src: url('/fonts/Graphik/Graphik-Regular.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-regular-italic';
+  src: url('/fonts/Graphik/Graphik-RegularItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-semibold';
+  src: url('/fonts/Graphik/Graphik-Semibold.otf') format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'graphic-semibold-italic';
+  src: url('/fonts/Graphik/Graphik-SemiboldItalic.otf') format("opentype");
+  font-display: swap;
+}
+
+/* ===== TYPOGRAPHY CLASSES ===== */
+/* Estas clases replican el sistema tipográfico del proyecto Vue */
+
+.heading1 {
+  font-family: 'canela-light', serif;
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 1100px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.heading2 {
+  font-family: 'canela-light', serif;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.25px;
+
+  @media (max-width: 1100px) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.heading2-italic {
+  font-family: 'canela-light-italic', serif;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.25px;
+  font-style: italic;
+
+  @media (max-width: 1100px) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.heading3 {
+  font-family: 'canela-light', serif;
+  font-size: 32px;
+  line-height: 40px;
+
+  @media (max-width: 1100px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.heading3-italic {
+  font-family: 'canela-light-italic', serif;
+  font-size: 32px;
+  line-height: 40px;
+  font-style: italic;
+
+  @media (max-width: 1100px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.heading4 {
+  font-family: 'canela-light', serif;
+  font-size: 24px;
+  line-height: 32px;
+
+  @media (max-width: 1100px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.heading5 {
+  font-family: 'canela-light', serif;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.body1 {
+  font-family: 'graphic-regular', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body1-strong {
+  font-family: 'graphic-medium', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body2 {
+  font-family: 'graphic-regular', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.body2-strong {
+  font-family: 'graphic-medium', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.caption {
+  font-family: 'graphic-regular', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.caption-strong {
+  font-family: 'graphic-medium', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.overline {
+  font-family: 'graphic-medium', sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}

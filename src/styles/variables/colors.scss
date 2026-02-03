@@ -1,0 +1,112 @@
+/**
+ * EXPLICACIÓN: Variables de colores en CSS
+ * 
+ * Estas variables CSS son las mismas que el proyecto Vue original.
+ * Se usan con var(--nombre-variable) en cualquier archivo CSS/SCSS.
+ * 
+ * También están disponibles en Tailwind con los nombres configurados
+ * en tailwind.config.ts (ej: className="bg-brand-blue")
+ */
+
+:root {
+  /* ===== ACCENT GOLD ===== */
+  --gold1: #99762C;
+  --gold2: #D6B755;
+  --gold3: #F7E470;
+
+  /* ===== BRAND PALETTE ===== */
+  --brand-off-black: #111111;
+  --brand-off-black-hover: #3D3B3B;
+  --brand-blue: #2900BB;
+  --brand-blue-hover: #200385;
+  --brand-blue-disabled: #E9D7FE;
+  --brand-mid-grey: #A8A7AA;
+  --brand-off-white: #F7F7F7;
+  --brand-white: #FFFFFF;
+
+  /* ===== GRADIENTS ===== */
+  --gradient-primary: linear-gradient(269deg, #99762C -8.84%, #D6B755 30.68%, #F7E470 51.01%, #D6B755 77.31%, #99762C 113.03%);
+
+  /* ===== TINS AND TRANSPARENCIES ===== */
+  --tins-dark-1: rgba(0, 0, 0, 0.60);
+  --tins-dark-2: rgba(0, 0, 0, 0.40);
+  --tins-dark-3: rgba(0, 0, 0, 0.20);
+  --tins-light-0: rgba(255, 255, 255, 0.80);
+  --tins-light-1: rgba(255, 255, 255, 0.60);
+  --tins-light-2: rgba(255, 255, 255, 0.40);
+  --tins-light-3: rgba(255, 255, 255, 0.20);
+
+  /* ===== FUNCTIONAL PALETTE ===== */
+  --validation-positive: #3CA30C;
+  --validation-positive-light: #ECFDF3;
+  --validation-error: #ED1C24;
+  --validation-error-dark: #97040A;
+  --validation-error-light: #FFEAED;
+
+  /* ===== TEXT ===== */
+  --text-primary: rgba(0, 0, 0, 0.87);
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-disabled: rgba(0, 0, 0, 0.38);
+
+  /* ===== PRIMARY ===== */
+  --primary-main: #2900BB;
+  --primary-dark: #1B007A;
+  --primary-light: #6F47FF;
+  --primary-contrast: #FFFFFF;
+  --primary-hover: rgba(41, 0, 187, 0.04);
+  --primary-selected: rgba(41, 0, 187, 0.08);
+  --primary-focus: rgba(41, 0, 187, 0.12);
+  --primary-focus-visible: rgba(41, 0, 187, 0.30);
+  --primary-outlined-border: rgba(41, 0, 187, 0.50);
+
+  /* ===== SECONDARY ===== */
+  --secondary-main: #5D6B98;
+  --secondary-dark: #4A5578;
+  --secondary-light: rgba(185, 192, 212, 0.12);
+  --secondary-contrast: #FFFFFF;
+
+  /* ===== ERROR ===== */
+  --error-main: #D32F2F;
+  --error-dark: #C62828;
+  --error-light: rgba(239, 83, 80, 0.12);
+  --error-contrast: #FFFFFF;
+
+  /* ===== WARNING ===== */
+  --warning-main: #ED6C02;
+  --warning-dark: #E65100;
+  --warning-light: rgba(255, 152, 0, 0.12);
+  --warning-contrast: #FFFFFF;
+
+  /* ===== INFO ===== */
+  --info-main: #0288D1;
+  --info-dark: #01579B;
+  --info-light: rgba(3, 169, 244, 0.12);
+  --info-contrast: #FFFFFF;
+
+  /* ===== SUCCESS ===== */
+  --success-main: #2E7D32;
+  --success-dark: #1B5E20;
+  --success-dark-mode: #12B76A;
+  --success-light: rgba(76, 175, 80, 0.12);
+  --success-contrast: #FFFFFF;
+
+  /* ===== BACKGROUND ===== */
+  --background-default: #FFFFFF;
+  --background-tab: #FCFCFC;
+
+  /* ===== ACTION ===== */
+  --action-hover: rgba(0, 0, 0, 0.04);
+  --action-selected: rgba(0, 0, 0, 0.08);
+  --action-disabled-background: rgba(0, 0, 0, 0.12);
+  --action-focus: rgba(0, 0, 0, 0.12);
+  --action-disabled: rgba(0, 0, 0, 0.38);
+  --action-active: rgba(0, 0, 0, 0.56);
+  --action-rating: #FFB400;
+
+  /* ===== DIVIDER ===== */
+  --divider-default: rgba(0, 0, 0, 0.12);
+  --divisor-line: #EAECF0;
+
+  /* ===== OVERLAY ===== */
+  --overlay-default: #3A3C3F;
+}

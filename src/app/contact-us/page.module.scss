@@ -1,0 +1,156 @@
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 120px 24px 80px;
+
+  @media (min-width: 1100px) {
+    padding: 140px 48px 80px;
+  }
+}
+
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+
+  h1 {
+    color: var(--brand-off-black);
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: var(--brand-mid-grey);
+  }
+}
+
+.whatsappButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 32px auto;
+  padding: 16px 32px;
+  background: #25D366;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'graphik-medium', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #128C7E;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 32px 0;
+  color: var(--brand-mid-grey);
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--brand-light-grey);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formRow {
+  display: grid;
+  gap: 24px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.label {
+  font-family: 'graphik-medium', sans-serif;
+  font-size: 14px;
+  color: var(--brand-off-black);
+}
+
+.input,
+.select,
+.textarea {
+  padding: 16px;
+  border: 1px solid var(--brand-light-grey);
+  border-radius: 12px;
+  font-family: 'graphik-regular', sans-serif;
+  font-size: 16px;
+  color: var(--brand-off-black);
+  background: white;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: var(--brand-gold);
+  }
+
+  &::placeholder {
+    color: var(--brand-mid-grey);
+  }
+}
+
+.textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submitButton {
+  padding: 16px 32px;
+  background: var(--brand-gold);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'graphik-medium', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--brand-gold-dark);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.successMessage {
+  text-align: center;
+  padding: 48px;
+  background: var(--brand-off-white);
+  border-radius: 16px;
+
+  h2 {
+    color: var(--brand-off-black);
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: var(--brand-mid-grey);
+  }
+}

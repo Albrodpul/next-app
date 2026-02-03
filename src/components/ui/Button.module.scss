@@ -1,0 +1,203 @@
+/**
+ * EXPLICACIÓN: Estilos del componente Button
+ * 
+ * Usamos CSS Modules (.module.scss) que es un sistema que:
+ * - Genera nombres de clase únicos automáticamente
+ * - Evita conflictos de estilos entre componentes
+ * - Permite usar SCSS con todas sus características
+ * 
+ * USO EN REACT:
+ *   import styles from './Button.module.scss'
+ *   <button className={styles.button}>
+ * 
+ * El nombre real de la clase será algo como: Button_button__a1b2c
+ * Esto evita que tus estilos afecten a otros componentes.
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 100px; // Pill shape como en el diseño original
+  cursor: pointer;
+  font-family: 'graphic-medium', sans-serif;
+  transition: all 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand-blue);
+    outline-offset: 2px;
+  }
+}
+
+// Tamaños
+.sm {
+  padding: 8px 16px;
+  font-size: 12px;
+  line-height: 16px;
+  min-height: 32px;
+}
+
+.md {
+  padding: 12px 24px;
+  font-size: 14px;
+  line-height: 20px;
+  min-height: 44px;
+}
+
+.lg {
+  padding: 16px 32px;
+  font-size: 16px;
+  line-height: 24px;
+  min-height: 56px;
+}
+
+// Variantes
+.primary {
+  background-color: var(--brand-blue);
+  color: var(--brand-white);
+
+  &:hover:not(:disabled) {
+    background-color: var(--brand-blue-hover);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+.secondary {
+  background-color: var(--brand-off-white);
+  color: var(--brand-off-black);
+  border: 1px solid var(--divider-default);
+
+  &:hover:not(:disabled) {
+    background-color: var(--action-hover);
+  }
+}
+
+.transparent {
+  background-color: transparent;
+  color: var(--brand-white);
+  border: 1px solid var(--brand-white);
+
+  &:hover:not(:disabled) {
+    background-color: var(--tins-light-3);
+  }
+}
+
+.icon {
+  padding: 8px;
+  min-width: auto;
+  min-height: auto;
+  background-color: transparent;
+  border-radius: 50%;
+
+  &:hover:not(:disabled) {
+    background-color: var(--action-hover);
+  }
+
+  &.sm {
+    padding: 6px;
+  }
+
+  &.lg {
+    padding: 12px;
+  }
+}
+
+.link {
+  background-color: transparent;
+  color: var(--brand-blue);
+  padding: 0;
+  min-height: auto;
+
+  &:hover:not(:disabled) {
+    text-decoration: underline;
+  }
+}
+
+.gold {
+  background: var(--gradient-primary);
+  color: var(--brand-off-black);
+  border: none;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+
+.dark {
+  background-color: var(--brand-off-black);
+  color: var(--brand-white);
+
+  &:hover:not(:disabled) {
+    background-color: var(--brand-off-black-hover);
+  }
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--brand-off-black);
+  padding: 0;
+  min-height: auto;
+
+  &:hover:not(:disabled) {
+    color: var(--brand-blue);
+  }
+}
+
+// Modificadores
+.fullWidth {
+  width: 100%;
+}
+
+.withBlur {
+  backdrop-filter: blur(10px);
+  background-color: var(--tins-light-1);
+}
+
+.loading {
+  pointer-events: none;
+}
+
+// Spinner
+.spinner {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinnerIcon {
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hidden {
+  visibility: hidden;
+}
